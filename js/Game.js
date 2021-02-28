@@ -46,9 +46,9 @@ class Game {
 
   play(){
     form.hide();
-
+ 
     Player.getPlayerInfo();
-    
+    player.getCarsAtEnd();
     if(allPlayers !== undefined){
       //var display_position = 100;
       background('#c68767');
@@ -92,11 +92,14 @@ class Game {
     }
     if(player.distance>3620){
       gameState = 2;
+      player.rank = player.rank + 1;
+      Player.updateCarsAtEnd(player.rank);
     }
     drawSprites();
   }
   end(){
     console.log("Game Ended");
+    console.log(player.rank);
   }
 
 }
